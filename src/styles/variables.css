@@ -1,0 +1,47 @@
+/* CSS Custom Properties - Early 2000s Inspired Color Palette */
+:root {
+  /* Color Palette */
+  --color-primary: #2D1810;        /* Dark brown for text */
+  --color-secondary: #8B4513;      /* Medium brown for secondary text */
+  --color-accent: #FF6B35;         /* Vibrant orange for links and highlights */
+  --color-background: #F5F1EB;     /* Light beige background */
+  --color-surface: #FFFFFF;        /* White for content cards and sections */
+  --color-border: #E8DDD4;         /* Subtle beige for borders */
+  --color-hover: #FFE5D9;          /* Light orange tint for interactive states */
+  
+  /* Typography */
+  --font-primary: Arial, Helvetica, sans-serif;
+  --font-code: 'Courier New', monospace;
+  
+  /* Font Sizes */
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 18px;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-size-h4: 1.25rem;
+  
+  /* Spacing System (8px base unit) */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 64px;
+  
+  /* Layout */
+  --max-width: 1200px;
+  --border-radius: 4px;
+  --border-width: 1px;
+  
+  /* Breakpoints */
+  --breakpoint-mobile: 320px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.35s ease;
+}

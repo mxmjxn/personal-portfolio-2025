@@ -1,0 +1,61 @@
+/* Main CSS Entry Point - Early 2000s Inspired Design System */
+
+/* Import CSS Custom Properties First */
+@import './variables.css';
+
+/* Import Global Styles */
+@import './global.css';
+
+/* Import Layout System */
+@import './layout.css';
+
+/* Import Component Styles */
+@import './components.css';
+
+/* Import Responsive Design */
+@import './responsive.css';
+
+/* Additional Early 2000s Aesthetic Enhancements */
+
+/* Subtle texture effect for backgrounds */
+body {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(139, 69, 19, 0.05) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* Enhanced focus styles for better accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--border-radius);
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
+::-moz-selection {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
+/* Scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}

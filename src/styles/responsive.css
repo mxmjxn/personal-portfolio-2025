@@ -1,0 +1,208 @@
+/* Responsive Design System */
+
+/* Mobile First Approach */
+/* Base styles are mobile-first, then enhanced for larger screens */
+
+/* Mobile Styles (320px - 767px) */
+@media (max-width: 767px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  /* Typography adjustments for mobile */
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  /* Navigation mobile adjustments */
+  .nav-container {
+    min-height: auto;
+    padding: var(--spacing-sm);
+  }
+  
+  /* Card adjustments */
+  .card {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  /* Button adjustments */
+  .btn {
+    width: 100%;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .card-footer .btn {
+    width: auto;
+    flex: 1;
+  }
+  
+  /* Spacing adjustments */
+  .page-main {
+    padding: var(--spacing-md) 0;
+  }
+  
+  .content-section {
+    margin-bottom: var(--spacing-lg);
+  }
+}
+
+/* Tablet Styles (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+  
+  /* Grid adjustments for tablet */
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Navigation tablet adjustments */
+  .nav-container {
+    padding: 0 var(--spacing-md);
+  }
+  
+  /* Card layout for tablet */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+/* Desktop Styles (1024px and up) */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+  
+  /* Enhanced typography for desktop */
+  h1 {
+    font-size: var(--font-size-h1);
+  }
+  
+  /* Navigation desktop enhancements */
+  .nav-container {
+    padding: 0 var(--spacing-lg);
+  }
+  
+  /* Card hover effects for desktop */
+  .card:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* Project grid for desktop */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  /* CV layout improvements */
+  .cv-section {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+  }
+  
+  .cv-section-title {
+    font-weight: bold;
+    color: var(--color-accent);
+    position: sticky;
+    top: var(--spacing-lg);
+  }
+}
+
+/* Large Desktop Styles (1200px and up) */
+@media (min-width: 1200px) {
+  /* Wider project grid for large screens */
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+  
+  /* Enhanced spacing */
+  .page-main {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .content-section {
+    margin-bottom: var(--spacing-xxl);
+  }
+}
+
+/* Print Styles */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+  
+  .nav-container,
+  .page-footer {
+    display: none;
+  }
+  
+  .page-layout {
+    display: block;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #000000;
+    --color-secondary: #333333;
+    --color-accent: #0066cc;
+    --color-background: #ffffff;
+    --color-surface: #ffffff;
+    --color-border: #000000;
+    --color-hover: #e6f3ff;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .project-card:hover {
+    transform: none;
+  }
+}
