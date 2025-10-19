@@ -1,4 +1,7 @@
-/* Global Styles - Early 2000s Typography with Modern Implementation */
+/* Global Styles - Modern Gaming-Inspired Design */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
 
 /* Reset and Base Styles */
 * {
@@ -7,79 +10,129 @@
   padding: 0;
 }
 
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   font-size: var(--font-size-base);
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 body {
   font-family: var(--font-primary);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   line-height: 1.6;
-  color: var(--color-primary);
-  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 
-/* Typography Hierarchy */
+/* Typography Hierarchy - Valorant Sharp Style */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-primary);
-  font-weight: bold;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  margin-bottom: var(--spacing-sm);
-  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-black);
+  line-height: 1;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-6);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
 }
 
 h1 {
-  font-size: var(--font-size-h1);
-  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--spacing-8);
+  color: var(--color-text-primary);
+  text-shadow: none; /* Remove muddy effects */
+  background: none;
+  -webkit-text-fill-color: initial;
 }
 
 h2 {
-  font-size: var(--font-size-h2);
-  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-5);
+  color: var(--color-accent-secondary);
 }
 
 h3 {
-  font-size: var(--font-size-h3);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-4);
+  color: var(--color-text-primary);
 }
 
 h4 {
-  font-size: var(--font-size-h4);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-3);
+  color: var(--color-text-secondary);
 }
 
 p {
-  margin-bottom: var(--spacing-sm);
-  line-height: 1.6;
+  margin-bottom: var(--spacing-4);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
 }
 
-/* Links */
+/* Links - Gaming Style */
 a {
-  color: var(--color-accent);
-  text-decoration: underline;
-  transition: color var(--transition-fast);
+  color: var(--color-accent-secondary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-secondary);
+  transition: width var(--transition-normal);
 }
 
 a:hover {
-  color: var(--color-secondary);
-  background-color: var(--color-hover);
+  color: var(--color-accent-primary);
+  text-shadow: var(--glow-primary);
+}
+
+a:hover::after {
+  width: 100%;
 }
 
 a:focus {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-accent-secondary);
+  outline-offset: 4px;
+  border-radius: var(--border-radius-sm);
 }
 
 /* Lists */
 ul, ol {
-  margin-bottom: var(--spacing-sm);
-  padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-4);
+  padding-left: var(--spacing-6);
+  color: var(--color-text-secondary);
 }
 
 li {
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-2);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
 }
 
 /* Code Elements */
@@ -123,4 +176,64 @@ button, input, textarea, select {
 /* Remove default focus styles for mouse users */
 :focus:not(:focus-visible) {
   outline: none;
+}
+
+/* Accessibility Utilities */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Skip Link for Keyboard Navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-accent);
+  color: var(--color-background);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  z-index: 1000;
+  font-weight: bold;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 6px;
+  outline: 2px solid var(--color-background);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #000000;
+    --color-background: #ffffff;
+    --color-accent: #0000ff;
+    --color-border: #000000;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
 }

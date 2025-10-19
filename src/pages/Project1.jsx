@@ -1,71 +1,94 @@
-import React from 'react';
-import ProjectCard from '../components/ProjectCard';
 import { getProjectById } from '../data/projects';
 
-const Project1 = () => {
+const Project1 = ({ onNavigate }) => {
   const project = getProjectById('project1');
 
   if (!project) {
     return (
-      <div className="content-section">
-        <h1 className="section-title">Project Not Found</h1>
-        <p>The requested project could not be found.</p>
+      <div className="section-block section-block--dark">
+        <div className="section-content">
+          <h1 className="section-heading">Project Not Found</h1>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="content-section">
-      <div className="page-header">
-        <h1 className="section-title">Project Details</h1>
-        <p className="page-subtitle">Detailed overview of {project.title}</p>
-      </div>
-      
-      <ProjectCard project={project} isDetailView={true} />
-      
-      <div className="project-additional-info">
-        <div className="project-overview">
-          <h3>Project Overview</h3>
-          <p>
-            This e-commerce platform represents a comprehensive full-stack solution 
-            designed to handle modern online retail requirements. The project demonstrates 
-            proficiency in both frontend and backend development, with particular emphasis 
-            on user experience, security, and scalability.
-          </p>
-        </div>
-        
-        <div className="technical-highlights">
-          <h3>Technical Highlights</h3>
-          <ul>
-            <li>Implemented secure JWT-based authentication system</li>
-            <li>Integrated Stripe API for secure payment processing</li>
-            <li>Built responsive design using CSS Grid and Flexbox</li>
-            <li>Developed RESTful API with Express.js and MongoDB</li>
-            <li>Created admin dashboard with real-time inventory management</li>
-            <li>Optimized performance with lazy loading and code splitting</li>
-          </ul>
-        </div>
-        
-        <div className="challenges-solutions">
-          <h3>Challenges & Solutions</h3>
-          <div className="challenge-item">
-            <h4>Challenge: Secure Payment Processing</h4>
-            <p>
-              Implementing secure payment handling while maintaining user experience 
-              required careful integration with Stripe's API and proper error handling 
-              for various payment scenarios.
-            </p>
-          </div>
-          <div className="challenge-item">
-            <h4>Challenge: Real-time Inventory Management</h4>
-            <p>
-              Ensuring accurate inventory tracking across multiple concurrent users 
-              required implementing proper database transactions and optimistic locking 
-              mechanisms.
-            </p>
+    <div className="project-page">
+      {/* Hero Section - Dark */}
+      <section className="section-block section-block--dark">
+        <div className="section-content">
+          <div className="project-hero">
+            <h1 className="project-name">{project.title}</h1>
+            <p className="project-description">{project.description}</p>
+            <div className="project-links">
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-btn">
+                  View Live
+                </a>
+              )}
+              {project.githubUrl && (
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-btn project-btn--secondary">
+                  View Code
+                </a>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Tech Section - Light */}
+      <section className="section-block section-block--light">
+        <div className="section-content">
+          <h3 className="section-heading">Technologies</h3>
+          <div className="tech-grid">
+            {project.technologies.slice(0, 6).map((tech, index) => (
+              <span key={index} className="tech-tag">{tech}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Project Images Section - Light */}
+      <section className="section-block section-block--light">
+        <div className="section-content">
+          <h3 className="section-heading">Project Gallery</h3>
+          <div className="project-gallery">
+            <div className="gallery-item">
+              <div className="gallery-placeholder">
+                <span>🖥️</span>
+                <small>Desktop View</small>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-placeholder">
+                <span>📱</span>
+                <small>Mobile View</small>
+              </div>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-placeholder">
+                <span>⚡</span>
+                <small>Performance Demo</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section - Accent */}
+      <section className="section-block section-block--accent">
+        <div className="section-content">
+          <h3 className="section-heading">Key Features</h3>
+          <div className="features-list">
+            {project.features.slice(0, 3).map((feature, index) => (
+              <div key={index} className="feature-item">
+                {feature}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

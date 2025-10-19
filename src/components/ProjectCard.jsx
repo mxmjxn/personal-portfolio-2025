@@ -3,22 +3,22 @@ import React from 'react';
 const ProjectCard = ({ project, isDetailView = false }) => {
   if (!project) {
     return (
-      <div className="project-card error">
+      <div className="project-card error" role="alert">
         <p>Project information not available</p>
       </div>
     );
   }
 
   return (
-    <div className={`project-card ${isDetailView ? 'detail-view' : 'summary-view'}`}>
-      <div className="project-header">
-        <h2 className="project-title">{project.title}</h2>
+    <article className={`project-card ${isDetailView ? 'detail-view' : 'summary-view'}`} aria-labelledby={`project-title-${project.id || 'unknown'}`}>
+      <header className="project-header">
+        <h2 id={`project-title-${project.id || 'unknown'}`} className="project-title">{project.title}</h2>
         {project.status && (
-          <span className={`project-status ${project.status}`}>
+          <span className={`project-status ${project.status}`} aria-label={`Project status: ${project.status}`}>
             {project.status}
           </span>
         )}
-      </div>
+      </header>
 
       <div className="project-description">
         <p>{project.description}</p>
@@ -26,47 +26,48 @@ const ProjectCard = ({ project, isDetailView = false }) => {
 
       {isDetailView && (
         <>
-          <div className="project-technologies">
-            <h3>Technologies Used</h3>
-            <ul className="tech-list">
+          <section className="project-technologies" aria-labelledby={`tech-heading-${project.id || 'unknown'}`}>
+            <h3 id={`tech-heading-${project.id || 'unknown'}`}>Technologies Used</h3>
+            <ul className="tech-list" role="list">
               {project.technologies.map((tech, index) => (
-                <li key={index} className="tech-item">{tech}</li>
+                <li key={index} className="tech-item" role="listitem">{tech}</li>
               ))}
             </ul>
-          </div>
+          </section>
 
-          <div className="project-features">
-            <h3>Key Features</h3>
-            <ul className="feature-list">
+          <section className="project-features" aria-labelledby={`features-heading-${project.id || 'unknown'}`}>
+            <h3 id={`features-heading-${project.id || 'unknown'}`}>Key Features</h3>
+            <ul className="feature-list" role="list">
               {project.features.map((feature, index) => (
-                <li key={index} className="feature-item">{feature}</li>
+                <li key={index} className="feature-item" role="listitem">{feature}</li>
               ))}
             </ul>
-          </div>
+          </section>
 
           {project.images && project.images.length > 0 && (
-            <div className="project-images">
-              <h3>Project Screenshots</h3>
-              <div className="image-gallery">
+            <section className="project-images" aria-labelledby={`images-heading-${project.id || 'unknown'}`}>
+              <h3 id={`images-heading-${project.id || 'unknown'}`}>Project Screenshots</h3>
+              <div className="image-gallery" role="img" aria-label="Project screenshot gallery">
                 {project.images.map((image, index) => (
-                  <div key={index} className="image-placeholder">
-                    <span>Screenshot {index + 1}</span>
-                    <small>{image}</small>
+                  <div key={index} className="image-placeholder" role="img" aria-label={`Screenshot ${index + 1}: ${image}`}>
+                    <span aria-hidden="true">Screenshot {index + 1}</span>
+                    <small aria-hidden="true">{image}</small>
                   </div>
                 ))}
               </div>
-            </div>
+            </section>
           )}
         </>
       )}
 
-      <div className="project-links">
+      <nav className="project-links" aria-label="Project links">
         {project.liveUrl && (
           <a 
             href={project.liveUrl} 
             target="_blank" 
             rel="noopener noreferrer"
             className="project-link live-link"
+            aria-label={`View live ${project.title} project (opens in new tab)`}
           >
             View Live Project
           </a>
@@ -77,18 +78,21 @@ const ProjectCard = ({ project, isDetailView = false }) => {
             target="_blank" 
             rel="noopener noreferrer"
             className="project-link github-link"
+            aria-label={`View ${project.title} source code on GitHub (opens in new tab)`}
           >
             View Source Code
           </a>
         )}
-      </div>
+      </nav>
 
       {project.completionDate && (
-        <div className="project-meta">
-          <small>Completed: {project.completionDate}</small>
-        </div>
+        <footer className="project-meta">
+          <small aria-label={`Project completed on ${project.completionDate}`}>
+            Completed: {project.completionDate}
+          </small>
+        </footer>
       )}
-    </div>
+    </article>
   );
 };
 

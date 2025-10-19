@@ -3,8 +3,99 @@
 /* Mobile First Approach */
 /* Base styles are mobile-first, then enhanced for larger screens */
 
-/* Mobile Styles (320px - 767px) */
-@media (max-width: 767px) {
+/* Extra Small Mobile Styles (320px - 479px) */
+@media (max-width: 479px) {
+  .container {
+    padding: 0 var(--spacing-xs);
+  }
+  
+  /* Typography adjustments for extra small screens */
+  h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.2rem;
+  }
+  
+  /* Navigation extra small adjustments */
+  .nav-container {
+    min-height: auto;
+    padding: var(--spacing-xs);
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .nav-brand {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-xs);
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: var(--spacing-sm);
+  }
+  
+  /* Enhanced touch targets for mobile */
+  .btn, .nav-link, .project-link {
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  /* Card adjustments for extra small screens */
+  .card, .project-card {
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-sm);
+  }
+  
+  /* Project card mobile optimizations */
+  .project-header {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .project-links {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .project-link {
+    width: 100%;
+  }
+  
+  /* CV mobile optimizations */
+  .cv-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .cv-contact-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Mobile Styles (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
   .container {
     padding: 0 var(--spacing-sm);
   }
@@ -26,6 +117,25 @@
   .nav-container {
     min-height: auto;
     padding: var(--spacing-sm);
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .nav-link {
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  /* Enhanced touch targets */
+  .btn, .nav-link, .project-link {
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
   }
   
   /* Card adjustments */
@@ -44,6 +154,13 @@
     flex: 1;
   }
   
+  /* Project links in rows of 2 */
+  .project-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+  }
+  
   /* Spacing adjustments */
   .page-main {
     padding: var(--spacing-md) 0;
@@ -60,6 +177,23 @@
     padding: 0 var(--spacing-md);
   }
   
+  /* Navigation tablet adjustments */
+  .nav-container {
+    padding: 0 var(--spacing-md);
+    flex-direction: row;
+    min-height: 60px;
+  }
+  
+  .nav-links {
+    flex-direction: row;
+    gap: var(--spacing-md);
+  }
+  
+  .nav-link {
+    min-width: auto;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
   /* Grid adjustments for tablet */
   .grid-cols-3 {
     grid-template-columns: repeat(2, 1fr);
@@ -69,16 +203,49 @@
     grid-template-columns: repeat(2, 1fr);
   }
   
-  /* Navigation tablet adjustments */
-  .nav-container {
-    padding: 0 var(--spacing-md);
-  }
-  
   /* Card layout for tablet */
   .project-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-md);
+  }
+  
+  /* Project card tablet optimizations */
+  .project-header {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .project-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+  
+  .project-link {
+    flex: 1;
+    min-width: 140px;
+  }
+  
+  /* CV tablet layout */
+  .cv-header {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .cv-contact-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Image gallery tablet layout */
+  .image-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Skills grid tablet layout */
+  .cv-skills-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -96,11 +263,34 @@
   /* Navigation desktop enhancements */
   .nav-container {
     padding: 0 var(--spacing-lg);
+    min-height: 60px;
+    flex-direction: row;
   }
   
-  /* Card hover effects for desktop */
+  .nav-links {
+    flex-direction: row;
+    gap: var(--spacing-lg);
+  }
+  
+  .nav-link {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    min-height: auto;
+  }
+  
+  /* Enhanced hover effects for desktop */
   .card:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 24, 16, 0.15);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45, 24, 16, 0.2);
+  }
+  
+  .nav-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(45, 24, 16, 0.2);
   }
   
   /* Project grid for desktop */
@@ -110,24 +300,57 @@
     gap: var(--spacing-lg);
   }
   
-  /* CV layout improvements */
-  .cv-section {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: var(--spacing-lg);
-    align-items: start;
+  /* Project layout desktop optimizations */
+  .project-header {
+    flex-direction: row;
+    align-items: flex-start;
   }
   
-  .cv-section-title {
-    font-weight: bold;
-    color: var(--color-accent);
-    position: sticky;
-    top: var(--spacing-lg);
+  .project-links {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+    justify-content: flex-start;
+  }
+  
+  .project-link {
+    flex: 0 0 auto;
+    min-width: 150px;
+  }
+  
+  /* CV desktop layout improvements */
+  .cv-header {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .cv-contact-info {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .cv-skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Image gallery desktop layout */
+  .image-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Home navigation desktop layout */
+  .home-navigation {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Large Desktop Styles (1200px and up) */
 @media (min-width: 1200px) {
+  /* Enhanced container width */
+  .container {
+    max-width: var(--max-width);
+    padding: 0 var(--spacing-xl);
+  }
+  
   /* Wider project grid for large screens */
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -141,6 +364,34 @@
   
   .content-section {
     margin-bottom: var(--spacing-xxl);
+  }
+  
+  /* Large desktop navigation */
+  .nav-container {
+    padding: 0 var(--spacing-xl);
+  }
+  
+  .nav-links {
+    gap: var(--spacing-xl);
+  }
+  
+  /* Enhanced CV layout for large screens */
+  .cv-contact-info {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .cv-skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* Home navigation large desktop layout */
+  .home-navigation {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Image gallery large desktop layout */
+  .image-gallery {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -198,11 +449,150 @@
     transition-duration: 0.01ms !important;
   }
   
-  .card:hover {
+  .card:hover,
+  .project-card:hover,
+  .nav-card:hover,
+  .btn:hover,
+  .project-link:hover {
     transform: none;
+  }
+}
+
+/* Responsive Utilities */
+
+/* Hide elements on specific screen sizes */
+.hide-mobile {
+  display: block;
+}
+
+.hide-tablet {
+  display: block;
+}
+
+.hide-desktop {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
   }
   
-  .project-card:hover {
-    transform: none;
+  .show-mobile {
+    display: block !important;
   }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hide-tablet {
+    display: none !important;
+  }
+  
+  .show-tablet {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hide-desktop {
+    display: none !important;
+  }
+  
+  .show-desktop {
+    display: block !important;
+  }
+}
+
+/* Responsive text alignment */
+.text-center-mobile {
+  text-align: left;
+}
+
+.text-left-desktop {
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .text-center-mobile {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-left-desktop {
+    text-align: left;
+  }
+}
+
+/* Responsive spacing utilities */
+@media (max-width: 767px) {
+  .mobile-spacing-sm {
+    margin: var(--spacing-sm) 0;
+  }
+  
+  .mobile-spacing-md {
+    margin: var(--spacing-md) 0;
+  }
+  
+  .mobile-padding-sm {
+    padding: var(--spacing-sm);
+  }
+  
+  .mobile-padding-md {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Layout integrity improvements */
+.responsive-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.responsive-video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Flexible grid system */
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(var(--spacing-sm) * -1);
+}
+
+.flex-grid > * {
+  padding: var(--spacing-sm);
+  flex: 1 1 300px;
+}
+
+@media (max-width: 767px) {
+  .flex-grid > * {
+    flex: 1 1 100%;
+  }
+}
+
+/* Touch-friendly scrolling */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+/* Prevent horizontal scroll on small screens */
+body, html {
+  overflow-x: hidden;
+}
+
+.container, .main-container, .nav-container, .footer-container {
+  max-width: 100%;
+  overflow-x: hidden;
 }
